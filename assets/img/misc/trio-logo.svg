@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 120" role="img" aria-label="PCHL 로고 (Maxwell, Einstein, Boltzmann 캐리커처가 선으로 연결된 모습)">
+  <line x1="60" y1="60" x2="170" y2="60" stroke="#42a5f5" stroke-width="8" stroke-linecap="round"/>
+  <line x1="170" y1="60" x2="280" y2="60" stroke="#42a5f5" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Maxwell -->
+  <g transform="translate(20,20) scale(0.66667)">
+    <circle cx="60" cy="60" r="67.5" fill="#ffffff"/>
+    <circle cx="60" cy="60" r="60" fill="#0a1128"/>
+    <path d="M26,46 C22,26 40,12 60,12 C80,12 98,26 94,46
+             C99,56 96,72 88,64 C90,48 78,36 60,36 C42,36 30,48 32,64
+             C24,72 21,56 26,46 Z" fill="#eef1f8"/>
+    <ellipse cx="60" cy="64" rx="24" ry="28" fill="#e3b98c"/>
+    <path d="M42,50 Q50,43 58,48" stroke="#c7ccd8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M62,48 Q70,43 78,50" stroke="#c7ccd8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="50" cy="60" r="2.4" fill="#0a1128"/>
+    <circle cx="70" cy="60" r="2.4" fill="#0a1128"/>
+    <path d="M46,76 C52,72 56,75 60,74 C64,75 68,72 74,76" stroke="#c7ccd8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M30,68 C24,92 40,108 60,108 C80,108 96,92 90,68
+             C94,84 82,100 60,100 C38,100 26,84 30,68 Z" fill="#eef1f8"/>
+  </g>
+
+  <!-- Einstein -->
+  <g transform="translate(130,20) scale(0.66667)">
+    <circle cx="60" cy="60" r="67.5" fill="#ffffff"/>
+    <circle cx="60" cy="60" r="60" fill="#0a1128"/>
+    <path d="M22,58 C10,40 18,16 40,14 C42,4 62,0 70,10 C88,4 106,22 98,42
+             C112,44 114,66 100,70 C104,88 82,98 70,88 C64,100 44,98 40,86
+             C22,90 8,72 22,58 Z" fill="#eef1f8"/>
+    <ellipse cx="60" cy="64" rx="24" ry="28" fill="#e3b98c"/>
+    <path d="M42,50 Q50,43 58,48" stroke="#c7ccd8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M62,48 Q70,43 78,50" stroke="#c7ccd8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="50" cy="60" r="2.4" fill="#0a1128"/>
+    <circle cx="70" cy="60" r="2.4" fill="#0a1128"/>
+    <path d="M38,78 C46,70 54,76 60,73 C66,76 74,70 82,78
+             C76,84 66,77 60,80 C54,77 44,84 38,78 Z" fill="#eef1f8"/>
+  </g>
+
+  <!-- Boltzmann -->
+  <g transform="translate(240,20) scale(0.66667)">
+    <circle cx="60" cy="60" r="67.5" fill="#ffffff"/>
+    <circle cx="60" cy="60" r="60" fill="#0a1128"/>
+    <path d="M24,42 C20,54 22,66 28,68 C25,56 25,46 30,38 C28,38 25,40 24,42 Z" fill="#eef1f8"/>
+    <path d="M96,42 C100,54 98,66 92,68 C95,56 95,46 90,38 C92,38 95,40 96,42 Z" fill="#eef1f8"/>
+    <ellipse cx="60" cy="64" rx="24" ry="28" fill="#e3b98c"/>
+    <path d="M42,50 Q50,43 58,48" stroke="#c7ccd8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M62,48 Q70,43 78,50" stroke="#c7ccd8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="50" cy="60" r="7" fill="none" stroke="#0a1128" stroke-width="2.5"/>
+    <circle cx="70" cy="60" r="7" fill="none" stroke="#0a1128" stroke-width="2.5"/>
+    <line x1="57" y1="60" x2="63" y2="60" stroke="#0a1128" stroke-width="2.5"/>
+    <circle cx="50" cy="60" r="2" fill="#0a1128"/>
+    <circle cx="70" cy="60" r="2" fill="#0a1128"/>
+    <path d="M28,64 C20,92 38,112 60,112 C82,112 100,92 92,64
+             C97,82 86,104 60,106 C34,104 23,82 28,64 Z" fill="#eef1f8"/>
+  </g>
+</svg>

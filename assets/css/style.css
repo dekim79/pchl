@@ -61,8 +61,7 @@ p { margin: 0 0 1em; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--white); flex-shrink: 0; }
 .brand:hover { text-decoration: none; }
 .brand img {
-  width: 42px; height: 42px; object-fit: contain; border-radius: 50%;
-  background: var(--white); padding: 3px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  width: 120px; height: 42px; object-fit: contain;
 }
 .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-text .full { font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; }
@@ -333,7 +332,7 @@ p { margin: 0 0 1em; }
 .site-footer { background: #07111c; color: rgba(255, 255, 255, 0.45); text-align: center; padding: 40px 0 30px; margin-top: 40px; }
 .footer-grid { display: flex; flex-direction: column; align-items: center; gap: 10px; padding-bottom: 18px; }
 .footer-brand {
-  width: 34px; height: 34px; border-radius: 50%; background: var(--white); padding: 3px; margin: 0 auto 6px; display: block;
+  width: 96px; height: 34px; margin: 0 auto 6px; display: block;
 }
 .footer-brand img { width: 100%; height: 100%; object-fit: contain; }
 .footer-links { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
