@@ -56,5 +56,4 @@ python -m http.server 8000
   이름·이메일·연구분야를 수정합니다.
 - **논문 추가**: `publications.html`의 해당 연도 `pub-list`에 `pub-item`을 추가합니다.
 - **뉴스 추가**: `news.html`의 `news-gallery`에 사진과 날짜를 추가합니다.
-- **PI 사진**: 현재 PI 사진 파일이 없어 이니셜(DEK) 플레이스홀더로 표시됩니다.
-  `assets/img/misc/`에 사진을 추가한 뒤 `pi.html`의 `.pi-photo` 블록을 `<img>` 태그로 교체하세요.
+- **PI 사진**: `assets/img/misc/pi-photo.jpg`를 교체하면 `pi.html`에 바로 반영됩니다.
