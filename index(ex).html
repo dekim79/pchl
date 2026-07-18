@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PCHL – Phase-Change Heat Transfer Lab</title>
+  <link rel="icon" type="image/png" href="LOGO.png" />
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #0d1b2a;
+      --blue:   #1565c0;
+      --sky:    #42a5f5;
+      --accent: #e65100;
+      --light:  #f4f6f9;
+      --white:  #ffffff;
+      --text:   #212121;
+      --muted:  #546e7a;
+      --radius: 8px;
+      --shadow: 0 4px 20px rgba(0,0,0,.10);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; }
+
+    /* ── Nav ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    }
+    .logo {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .logo-mark {
+      display: flex; align-items: center; justify-content: center;
+      background: var(--white);
+      border-radius: 50%;
+      width: 42px; height: 42px;
+      padding: 3px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    .logo-mark img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+    .logo-name {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+    nav { display: flex; gap: 28px; }
+    nav a {
+      color: rgba(255,255,255,.82);
+      font-size: .92rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--sky); text-decoration: none; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #163d6e 60%, #1a5276 100%);
+      color: var(--white);
+      padding: 110px 5% 90px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(66,165,245,.18) 0%, transparent 65%);
+    }
+    .hero-inner { position: relative; max-width: 760px; }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(66,165,245,.2);
+      border: 1px solid rgba(66,165,245,.45);
+      color: var(--sky);
+      font-size: .82rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .hero h1 span { color: var(--sky); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 36px;
+      max-width: 600px;
+    }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 11px 28px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: .93rem;
+      transition: opacity .2s, transform .15s;
+      cursor: pointer;
+    }
+    .btn:hover { opacity: .88; transform: translateY(-2px); text-decoration: none; }
+    .btn-primary { background: var(--sky); color: var(--navy); }
+    .btn-outline { border: 2px solid rgba(255,255,255,.55); color: var(--white); }
+
+    /* ── Section wrapper ── */
+    section { padding: 80px 5%; }
+    .section-label {
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .section-desc {
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    /* ── Research Areas ── */
+    .research { background: var(--light); }
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .research-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--blue);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .research-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.13); }
+    .card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+    .research-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .research-card p { color: var(--muted); font-size: .93rem; }
+
+    /* ── News ── */
+    .news-list { display: flex; flex-direction: column; gap: 0; }
+    .news-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 22px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-date {
+      flex-shrink: 0;
+      width: 70px;
+      text-align: center;
+    }
+    .news-date .day {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .news-date .month {
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .news-badge {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      padding: 2px 9px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .badge-pub   { background: #e3f2fd; color: #1565c0; }
+    .badge-conf  { background: #fce4ec; color: #c62828; }
+    .badge-award { background: #fff8e1; color: #e65100; }
+    .badge-news  { background: #e8f5e9; color: #2e7d32; }
+    .news-item h4 { font-size: .97rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+    .news-item p  { font-size: .88rem; color: var(--muted); }
+
+    /* ── People highlight ── */
+    .people { background: var(--light); }
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 24px;
+    }
+    .person-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 18px 22px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform .2s;
+    }
+    .person-card:hover { transform: translateY(-3px); }
+    .avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px;
+      font-size: 1.6rem;
+      color: var(--white);
+      font-weight: 700;
+    }
+    .person-card h4 { font-size: .95rem; font-weight: 700; color: var(--navy); }
+    .person-card span { font-size: .82rem; color: var(--muted); }
+
+    /* ── Publications teaser ── */
+    .pub-list { display: flex; flex-direction: column; gap: 18px; }
+    .pub-item {
+      padding: 22px 24px;
+      background: var(--white);
+      border-left: 4px solid var(--sky);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      box-shadow: var(--shadow);
+    }
+    .pub-journal {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 4px;
+    }
+    .pub-item h4 { font-size: .97rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+    .pub-item p  { font-size: .87rem; color: var(--muted); }
+
+    /* ── Contact / Map ── */
+    .contact { background: var(--navy); color: var(--white); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-desc  { color: rgba(255,255,255,.65); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    @media (max-width: 680px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-info { display: flex; flex-direction: column; gap: 18px; }
+    .contact-row { display: flex; gap: 14px; align-items: flex-start; }
+    .contact-icon { font-size: 1.3rem; margin-top: 2px; }
+    .contact-row h5 { font-size: .82rem; color: rgba(255,255,255,.55); font-weight: 600; margin-bottom: 2px; text-transform: uppercase; letter-spacing: .06em; }
+    .contact-row p  { font-size: .95rem; color: rgba(255,255,255,.88); }
+    .map-placeholder {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius);
+      height: 240px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.4);
+      font-size: .9rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #07111c;
+      color: rgba(255,255,255,.45);
+      text-align: center;
+      padding: 28px 5%;
+      font-size: .85rem;
+    }
+    footer span { color: var(--sky); }
+    .footer-logo {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--white);
+      padding: 3px;
+      margin: 0 auto 10px;
+      display: block;
+    }
+    .footer-logo img { width: 100%; height: 100%; object-fit: contain; }
+  </style>
+</head>
+<body>
+
+<!-- ════════ HEADER ════════ -->
+<header>
+  <div class="logo">
+    <div class="logo-mark"><img src="LOGO.png" alt="PCHL logo" /></div>
+    <div class="logo-name">Phase-Change Heat Transfer Lab</div>
+  </div>
+  <nav>
+    <a href="#research">Research</a>
+    <a href="#news">News</a>
+    <a href="#people">People</a>
+    <a href="#publications">Publications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Department of Mechanical / Nuclear Engineering</div>
+    <h1>Phase-Change<br /><span>Heat Transfer Lab</span></h1>
+    <p class="hero-sub">
+      We explore the fundamental physics and engineering applications of boiling,
+      condensation, and two-phase flow — with a focus on nuclear reactor thermal
+      hydraulics and advanced cooling technologies.
+    </p>
+    <div class="hero-buttons">
+      <a href="#research" class="btn btn-primary">Explore Research</a>
+      <a href="#publications" class="btn btn-outline">Publications</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ RESEARCH AREAS ════════ -->
+<section class="research" id="research">
+  <div class="section-label">What We Study</div>
+  <h2 class="section-title">Research Areas</h2>
+  <p class="section-desc">
+    Our work bridges fundamental two-phase flow physics and practical engineering
+    challenges in nuclear and thermal systems.
+  </p>
+  <div class="research-grid">
+    <div class="research-card">
+      <div class="card-icon">💧</div>
+      <h3>Pool &amp; Flow Boiling</h3>
+      <p>
+        Nucleate, transition, and film boiling; critical heat flux (CHF)
+        enhancement; surface wettability and micro/nanostructure effects on
+        bubble dynamics.
+      </p>
+    </div>
+    <div class="research-card">
+      <div class="card-icon">❄️</div>
+      <h3>Condensation Heat Transfer</h3>
+      <p>
+        Dropwise and filmwise condensation; vapor-liquid interface dynamics;
+        superhydrophobic and hybrid-wettability surfaces for passive condensers.
+      </p>
+    </div>
+    <div class="research-card">
+      <div class="card-icon">⚛️</div>
+      <h3>Nuclear Reactor Thermal Hydraulics</h3>
+      <p>
+        Departure from nucleate boiling (DNB) in PWRs; passive safety systems;
+        in-vessel retention (IVR); accident thermal-hydraulics simulation.
+      </p>
+    </div>
+    <div class="research-card">
+      <div class="card-icon">🔬</div>
+      <h3>Two-Phase Flow &amp; Instability</h3>
+      <p>
+        Flow regime mapping; density-wave oscillations; void fraction measurement
+        with X-ray/neutron tomography; subchannel analysis codes.
+      </p>
+    </div>
+    <div class="research-card">
+      <div class="card-icon">💻</div>
+      <h3>Computational Modeling</h3>
+      <p>
+        CFD of boiling with phase-field and sharp-interface methods; mechanistic
+        wall boiling models; machine-learning-assisted heat-transfer correlations.
+      </p>
+    </div>
+    <div class="research-card">
+      <div class="card-icon">🌡️</div>
+      <h3>Advanced Cooling Technologies</h3>
+      <p>
+        Immersion cooling for data centers; two-phase loop heat pipes; spray
+        cooling; thermoelectric-coupled phase-change systems.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ NEWS ════════ -->
+<section id="news">
+  <div class="section-label">Latest Updates</div>
+  <h2 class="section-title">News &amp; Announcements</h2>
+  <p class="section-desc">Recent highlights from the lab.</p>
+  <div class="news-list">
+    <div class="news-item">
+      <div class="news-date"><span class="day">07</span><span class="month">Jul 2026</span></div>
+      <div>
+        <span class="news-badge badge-pub">Publication</span>
+        <h4>New paper published in <em>International Journal of Heat and Mass Transfer</em></h4>
+        <p>"Effect of surface wettability gradient on dropwise condensation heat transfer coefficient" — Kim, J. et al.</p>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-date"><span class="day">20</span><span class="month">Jun 2026</span></div>
+      <div>
+        <span class="news-badge badge-conf">Conference</span>
+        <h4>PCHL presents three papers at NURETH-21, Kyoto</h4>
+        <p>Topics: CHF under low-pressure conditions, IVR heat flux distribution, and subcooled flow boiling of nanofluid.</p>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-date"><span class="day">03</span><span class="month">May 2026</span></div>
+      <div>
+        <span class="news-badge badge-award">Award</span>
+        <h4>Graduate student Park S. receives Best Paper Award at KSME Spring Conference</h4>
+        <p>Congratulations on the recognition for the work on two-phase flow instability in SMR channels.</p>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-date"><span class="day">14</span><span class="month">Mar 2026</span></div>
+      <div>
+        <span class="news-badge badge-news">Lab News</span>
+        <h4>New high-speed visualization facility commissioned</h4>
+        <p>Our new 500 kfps camera system enables direct observation of bubble departure and merging dynamics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PEOPLE ════════ -->
+<section class="people" id="people">
+  <div class="section-label">Our Team</div>
+  <h2 class="section-title">People</h2>
+  <p class="section-desc">
+    A multidisciplinary team of researchers pushing the boundaries of heat transfer science.
+  </p>
+  <div class="people-grid">
+    <div class="person-card">
+      <div class="avatar">PI</div>
+      <h4>Prof. [Name]</h4>
+      <span>Principal Investigator</span>
+    </div>
+    <div class="person-card">
+      <div class="avatar">P</div>
+      <h4>Postdoctoral Researcher</h4>
+      <span>Two-phase CFD</span>
+    </div>
+    <div class="person-card">
+      <div class="avatar">G</div>
+      <h4>Ph.D. Student</h4>
+      <span>Boiling &amp; CHF</span>
+    </div>
+    <div class="person-card">
+      <div class="avatar">G</div>
+      <h4>Ph.D. Student</h4>
+      <span>Nuclear T-H</span>
+    </div>
+    <div class="person-card">
+      <div class="avatar">G</div>
+      <h4>M.S. Student</h4>
+      <span>Condensation</span>
+    </div>
+    <div class="person-card">
+      <div class="avatar">+</div>
+      <h4>Join Us</h4>
+      <span>Openings available</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PUBLICATIONS ════════ -->
+<section id="publications">
+  <div class="section-label">Selected Output</div>
+  <h2 class="section-title">Recent Publications</h2>
+  <p class="section-desc">A sample of our latest peer-reviewed work.</p>
+  <div class="pub-list">
+    <div class="pub-item">
+      <div class="pub-journal">Int. J. Heat Mass Transfer · 2026</div>
+      <h4>Effect of surface wettability gradient on dropwise condensation heat transfer coefficient</h4>
+      <p>Kim J., Lee S., [Author] · DOI: 10.1016/j.ijheatmasstransfer.2026.xxxxx</p>
+    </div>
+    <div class="pub-item">
+      <div class="pub-journal">Nuclear Engineering and Design · 2025</div>
+      <h4>Mechanistic prediction of departure from nucleate boiling in rectangular subchannels</h4>
+      <p>Park S., [Author] et al. · DOI: 10.1016/j.nucengdes.2025.xxxxx</p>
+    </div>
+    <div class="pub-item">
+      <div class="pub-journal">Experimental Thermal and Fluid Science · 2025</div>
+      <h4>High-speed visualization of bubble dynamics on micro-structured surfaces at sub-atmospheric pressure</h4>
+      <p>Choi H., Kim J., [Author] · DOI: 10.1016/j.expthermflusci.2025.xxxxx</p>
+    </div>
+    <div class="pub-item">
+      <div class="pub-journal">Annals of Nuclear Energy · 2024</div>
+      <h4>In-vessel retention heat flux assessment for a 1000 MWe PWR under severe accident scenarios</h4>
+      <p>[Author] et al. · DOI: 10.1016/j.anucene.2024.xxxxx</p>
+    </div>
+  </div>
+  <br />
+  <a href="#" class="btn btn-primary" style="display:inline-block;margin-top:8px;">View All Publications →</a>
+</section>
+
+<!-- ════════ CONTACT ════════ -->
+<section class="contact" id="contact">
+  <div class="section-label" style="color:var(--sky);">Get In Touch</div>
+  <h2 class="section-title">Contact Us</h2>
+  <p class="section-desc">
+    We welcome inquiries from prospective students, collaborators, and industry partners.
+  </p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-row">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h5>Location</h5>
+          <p>Engineering Building, Room XXX<br />
+             [University Name], [City], Korea</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">📧</div>
+        <div>
+          <h5>Email</h5>
+          <p>pchl@[university].ac.kr</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h5>Phone</h5>
+          <p>+82-XX-XXXX-XXXX</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">🎓</div>
+        <div>
+          <h5>Prospective Students</h5>
+          <p>We are recruiting motivated M.S. / Ph.D. students with backgrounds in mechanical, nuclear, or chemical engineering. Please send your CV and a brief statement of research interest.</p>
+        </div>
+      </div>
+    </div>
+    <div class="map-placeholder">
+      [ Campus Map / Google Maps embed ]
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <div class="footer-logo"><img src="LOGO.png" alt="PCHL logo" /></div>
+  <p>&copy; 2026 <span>Phase-Change Heat Transfer Lab (PCHL)</span> · All rights reserved.</p>
+  <p style="margin-top:6px;">[University Name] · Department of [Mechanical / Nuclear Engineering]</p>
+</footer>
+
+</body>
+</html>
