@@ -295,13 +295,28 @@ p { margin: 0 0 1em; }
 .topic-panel .cap p { color: var(--muted); font-size: 0.9rem; margin-bottom: 0; }
 .topic-panel .cap.red h3 { color: var(--accent); }
 .topic-panel .cap.blue h3 { color: var(--blue); }
-.topic-img { background: var(--light); }
-.topic-img img { width: 100%; }
+.topic-img { background: var(--light); aspect-ratio: 16/9; position: relative; overflow: hidden; }
+.topic-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .topic-img.placeholder {
-  aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
   color: var(--muted); font-size: 0.86rem; font-weight: 600;
 }
 .topic-img.placeholder .icon { font-size: 2.2rem; }
+
+.topic-img.crossfade img {
+  position: absolute; inset: 0;
+  opacity: 0;
+  animation-name: crossfade-cycle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes crossfade-cycle {
+  0% { opacity: 0; }
+  12.5% { opacity: 1; }
+  25% { opacity: 1; }
+  37.5% { opacity: 0; }
+  100% { opacity: 0; }
+}
 
 /* ---------- Footer ---------- */
 .site-footer { background: #07111c; color: rgba(255, 255, 255, 0.45); text-align: center; padding: 40px 0 30px; margin-top: 40px; }
