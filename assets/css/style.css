@@ -23,7 +23,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   margin: 0;
@@ -58,14 +58,14 @@ p { margin: 0 0 1em; }
   display: flex; align-items: center; justify-content: space-between;
   max-width: var(--maxw); margin: 0 auto; padding: 0 28px; height: 64px; gap: 20px;
 }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--white); flex-shrink: 0; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--white); min-width: 0; overflow: hidden; }
 .brand:hover { text-decoration: none; }
 .brand img {
-  width: 120px; height: 42px; object-fit: contain;
+  width: 120px; height: 42px; object-fit: contain; flex-shrink: 0;
 }
-.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
-.brand-text .full { font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; }
-.brand-text .sub { font-size: 0.66rem; color: var(--sky); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 1px; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.brand-text .full { font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand-text .sub { font-size: 0.66rem; color: var(--sky); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; align-items: center; }
 .nav-links a {
