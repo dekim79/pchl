@@ -377,7 +377,13 @@ p { margin: 0 0 1em; }
 }
 .timeline .yr { font-weight: 700; color: var(--ink-900); margin-right: 8px; }
 
-.subhead { font-size: 1.12rem; margin: 0 0 16px; padding-top: 6px; }
+.subhead {
+  font-size: 1.12rem;
+  margin: 0 0 20px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.subhead:first-of-type { padding-top: 0; border-top: 0; }
 
 /* ---------- Publications ---------- */
 .pub-year {
@@ -521,6 +527,22 @@ p { margin: 0 0 1em; }
 .topic-panel .cap.blue h3 { color: var(--blue-500); }
 .topic-img { background: var(--navy-950); }
 .topic-img img { width: 100%; }
+.topic-img.placeholder {
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper-50);
+  border-bottom: 1px dashed var(--border);
+  color: var(--ink-300);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+.topic-panel .cap h3.placeholder-text,
+.topic-panel .cap p.placeholder-text {
+  color: var(--ink-300);
+  font-style: italic;
+}
 
 /* ---------- Footer ---------- */
 .site-footer {
