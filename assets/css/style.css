@@ -310,11 +310,22 @@ p { margin: 0 0 1em; }
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
+.topic-img.crossfade.crossfade-2img img { animation-name: crossfade-cycle-2img; }
 @keyframes crossfade-cycle {
   0% { opacity: 0; }
   12.5% { opacity: 1; }
   25% { opacity: 1; }
   37.5% { opacity: 0; }
+  100% { opacity: 0; }
+}
+/* Wider active window for 2-image galleries: with only 2 slots, the 4-slot
+   percentages above leave a blank gap between fades, so this variant keeps
+   each image visible long enough for the next one to overlap it. */
+@keyframes crossfade-cycle-2img {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  50% { opacity: 1; }
+  75% { opacity: 0; }
   100% { opacity: 0; }
 }
 
