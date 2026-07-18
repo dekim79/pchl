@@ -6,17 +6,15 @@
   <g transform="translate(20,20) scale(0.66667)">
     <circle cx="60" cy="60" r="67.5" fill="#ffffff"/>
     <circle cx="60" cy="60" r="60" fill="#0a1128"/>
-    <path d="M26,46 C22,26 40,12 60,12 C80,12 98,26 94,46
-             C99,56 96,72 88,64 C90,48 78,36 60,36 C42,36 30,48 32,64
-             C24,72 21,56 26,46 Z" fill="#eef1f8"/>
+    <path d="M36,36 C32,22 44,12 60,12 C76,12 88,22 84,36
+             C80,28 72,24 60,24 C48,24 40,28 36,36 Z" fill="#eef1f8"/>
     <ellipse cx="60" cy="64" rx="24" ry="28" fill="#e3b98c"/>
     <path d="M42,50 Q50,43 58,48" stroke="#c7ccd8" stroke-width="3" fill="none" stroke-linecap="round"/>
     <path d="M62,48 Q70,43 78,50" stroke="#c7ccd8" stroke-width="3" fill="none" stroke-linecap="round"/>
     <circle cx="50" cy="60" r="2.4" fill="#0a1128"/>
     <circle cx="70" cy="60" r="2.4" fill="#0a1128"/>
-    <path d="M46,76 C52,72 56,75 60,74 C64,75 68,72 74,76" stroke="#c7ccd8" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <path d="M30,68 C24,92 40,108 60,108 C80,108 96,92 90,68
-             C94,84 82,100 60,100 C38,100 26,84 30,68 Z" fill="#eef1f8"/>
+    <path d="M32,74 C26,96 40,114 60,114 C80,114 94,96 88,74
+             C92,90 82,106 60,108 C38,106 28,90 32,74 Z" fill="#eef1f8"/>
   </g>
 
   <!-- Einstein -->
@@ -39,8 +37,10 @@
   <g transform="translate(240,20) scale(0.66667)">
     <circle cx="60" cy="60" r="67.5" fill="#ffffff"/>
     <circle cx="60" cy="60" r="60" fill="#0a1128"/>
-    <path d="M24,42 C20,54 22,66 28,68 C25,56 25,46 30,38 C28,38 25,40 24,42 Z" fill="#eef1f8"/>
-    <path d="M96,42 C100,54 98,66 92,68 C95,56 95,46 90,38 C92,38 95,40 96,42 Z" fill="#eef1f8"/>
+    <path d="M22,44 C18,58 21,70 28,72 C24,58 24,46 30,36 C27,37 24,40 22,44 Z" fill="#eef1f8"/>
+    <path d="M98,44 C102,58 99,70 92,72 C96,58 96,46 90,36 C93,37 96,40 98,44 Z" fill="#eef1f8"/>
+    <path d="M38,28 C40,17 48,9 60,9 C72,9 80,17 82,28
+             C76,19 68,15 60,15 C52,15 44,19 38,28 Z" fill="#eef1f8"/>
     <ellipse cx="60" cy="64" rx="24" ry="28" fill="#e3b98c"/>
     <path d="M42,50 Q50,43 58,48" stroke="#c7ccd8" stroke-width="3" fill="none" stroke-linecap="round"/>
     <path d="M62,48 Q70,43 78,50" stroke="#c7ccd8" stroke-width="3" fill="none" stroke-linecap="round"/>
