@@ -6,7 +6,7 @@
 <title>Current Issues — PCHL | Chung-Ang University</title>
 <meta name="description" content="PCHL이 현재 논의하고 해결해 나가고 있는 실험/연구 이슈 트래킹." />
 <link rel="icon" href="assets/img/misc/einstein-placeholder.svg" type="image/svg+xml" />
-<link rel="stylesheet" href="assets/css/style.css?v=9" />
+<link rel="stylesheet" href="assets/css/style.css?v=10" />
 </head>
 <body>
 <a class="skip-link" href="#main">본문 바로가기</a>
@@ -52,13 +52,39 @@
           <span class="status-pill status-progress">Planning</span>
           <h3>2026 하계방학 연구계획</h3>
           <p class="issue-meta">Lab-wide · 2026</p>
-          <p>하계방학 기간 동안 진행할 실험 셋업, 데이터 취득, 논문 작성 일정을 구성원별로 정리하고 공유합니다.</p>
+          <p>하계방학 기간 동안 진행할 실험 셋업, 데이터 취득, 논문 작성 일정을 분야별로 정리하고 공유합니다. (2026.07.01 PCHL Summer Vacation Meeting 기준)</p>
         </div>
-        <div class="issue-docs">
-          <a class="pdf-preview" href="Current_issues/PCHL_2026_하계방학_연구계획.pdf" download>
-            <iframe src="Current_issues/PCHL_2026_하계방학_연구계획.pdf" title="2026 하계방학 연구계획 PDF"></iframe>
-            <div class="pdf-preview-label">연구계획.pdf</div>
-          </a>
+        <div class="issue-detail">
+          <div class="grid-3 team-grid">
+            <div class="team-card team-green">
+              <h4>비등 · 칩쿨링 / IR 센서 개발</h4>
+              <ul>
+                <li>IR 센서 3개 동시 구동 실험 (1ch 3chain / 3ch 1chain 검증)</li>
+                <li>헬리컬 코일 벽면 4방향 온도 측정 브래킷 설계 및 방사율 보정</li>
+                <li>12개 센서 확장 실험 (8ch 컨버터, 3채널×4센서)</li>
+              </ul>
+              <p class="team-sched"><strong>7월</strong> Hot plate 고온실험 설계·실험&nbsp;&nbsp;·&nbsp;&nbsp;<strong>8월</strong> 나선형 배관 센서 부착방안 도출·부품 제작</p>
+            </div>
+            <div class="team-card team-blue">
+              <h4>i-SMR 실험</h4>
+              <ul>
+                <li>헬리컬 코일 절연부품(Gasket, Flange) 및 공급라인 피팅 확보</li>
+                <li>전기 계장 마무리(압력계·유량계·마그네틱펌프 DAS 연결), 분전반 배선</li>
+                <li>축압기/충진기, TC 포트, 냉각탑 팬, 도압관, 예열히터 세부 작업</li>
+              </ul>
+              <p class="team-sched"><strong>7월</strong> 배관·계측기 실험 루프 구축 완료&nbsp;&nbsp;·&nbsp;&nbsp;<strong>8월</strong> 실험장치 시운전</p>
+            </div>
+            <div class="team-card team-orange">
+              <h4>비등 가시화 연구 / LED 조명 제작</h4>
+              <ul>
+                <li>LED 광학계(TIR 렌즈·Mount) 설계 및 회로 구성, LED 테스트</li>
+                <li>ITO heater 기반 직접접촉 비등 실험 구조 설계, Jig·Chamber 재설계</li>
+                <li>LED·카메라(HSV, IR) 위치 정렬, i-SMR 냉각수 루프 구축 지원</li>
+              </ul>
+              <p class="team-sched"><strong>7월</strong> LED칩 냉각부·Optics 설계 완료&nbsp;&nbsp;·&nbsp;&nbsp;<strong>8월</strong> 조명장치 제작·비등가시화 광학계 구축 완료</p>
+            </div>
+          </div>
+          <p class="team-flow-note">※ 세 분야 모두 i-SMR 실험에 협업 참여하며, 신규 연구원은 연구실 적응 후 희망 분야를 배정받습니다.</p>
         </div>
       </div>
 
@@ -68,22 +94,103 @@
           <h3>SCR–전극 연결부(Joule Heating) 설계</h3>
           <p class="issue-meta">Experimental Setup</p>
           <p>대전류 인가 시 안정적인 전류 공급을 위한 부스바(busbar) 지지·절연 구조 및 DC 전력 배선 설계를 검토하고 있습니다.</p>
-          <ul>
-            <li>안정적 전류 공급을 위한 부스바 spec 검토</li>
-            <li>부스바 지지 및 절연 구조 설계</li>
-            <li>부스바 방수·접촉 안전 대책 마련</li>
-            <li>전선 압착 구조 및 방수 피복 설계 (DC 전력배선)</li>
-          </ul>
         </div>
-        <div class="issue-docs">
-          <a class="pdf-preview" href="Current_issues/busbar_spec.pdf" download>
-            <iframe src="Current_issues/busbar_spec.pdf" title="부스바 spec PDF"></iframe>
-            <div class="pdf-preview-label">busbar_spec.pdf</div>
-          </a>
-          <a class="pdf-preview" href="Current_issues/DC전력배선_설계요약.pdf" download>
-            <iframe src="Current_issues/DC전력배선_설계요약.pdf" title="DC 전력배선 설계요약 PDF"></iframe>
-            <div class="pdf-preview-label">DC전력배선.pdf</div>
-          </a>
+        <div class="issue-detail">
+          <p class="detail-caption">SCR 정류기 → 전극(2조) · 150V / 1000A DC · 배선거리 약 15m(편도) · 두께 6mm 고정</p>
+
+          <div class="grid-4 stat-mini-grid">
+            <div class="stat-box"><div class="stat-num">150 V</div><div class="stat-label">최대 전압 DC</div></div>
+            <div class="stat-box"><div class="stat-num">1,000 A</div><div class="stat-label">정격 전류 DC</div></div>
+            <div class="stat-box"><div class="stat-num">15 m</div><div class="stat-label">배선 거리(편도)</div></div>
+            <div class="stat-box"><div class="stat-num">6 mm</div><div class="stat-label">부스바 두께(고정)</div></div>
+          </div>
+
+          <div class="spec-columns">
+            <div class="spec-highlight">
+              <span class="spec-highlight-tag">권장 사양 (1조 기준)</span>
+              <div class="spec-highlight-value">100 × 6 mm</div>
+              <div class="spec-highlight-sub">폭 × 두께, 평각 동부스바</div>
+              <dl class="spec-dl">
+                <div><dt>단면적</dt><dd>645 mm² (1.0 in²)</dd></div>
+                <div><dt>전류밀도</dt><dd>약 1.55 A/mm²</dd></div>
+                <div><dt>DC 허용전류*</dt><dd>약 1,300 A</dd></div>
+                <div><dt>설계 여유율</dt><dd>+30% (vs 1,000A)</dd></div>
+                <div><dt>소요 수량</dt><dd>2조 (+/− 각 1)</dd></div>
+              </dl>
+              <p class="spec-footnote">* 실내 40℃ 주변온도, 온도상승 30℃ 기준 (CDA 부스바 전류용량표 환산)</p>
+            </div>
+
+            <div class="spec-side">
+              <div class="wiring-diagram">
+                <div class="wiring-row">
+                  <span class="wiring-node">SCR 정류기<br>(+) 출력</span>
+                  <span class="wiring-arrow">→ 15m · 100×6mm →</span>
+                  <span class="wiring-node">전극 1 (+)</span>
+                </div>
+                <div class="wiring-row">
+                  <span class="wiring-node">전극 2 (−)</span>
+                  <span class="wiring-arrow">← 15m · 100×6mm ←</span>
+                  <span class="wiring-node">SCR 정류기<br>(−) 출력</span>
+                </div>
+              </div>
+              <div class="callout-box">
+                <div class="callout-title">전압강하 검토</div>
+                <div class="callout-value">약 1.0 V</div>
+                <div class="callout-sub">왕복 30m, 1,000A 기준 · 150V 대비 0.7% → 설계 제약 아님</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="spec-columns-2">
+            <div>
+              <h4 class="detail-subhead">설치 · 재질 권장사항</h4>
+              <ul class="detail-list">
+                <li>재질: C11000 (전기동, ETP) 평각 부스바</li>
+                <li>접속부: 주석(Sn) 도금 → 접촉저항·부식 방지</li>
+                <li>지지: 절연 스탠드오프 1.0~1.2m 간격 고정</li>
+                <li>15m 구간: 강성 바 분할 + 전극단 유연 동브레이드 조인트 권장</li>
+                <li>볼트 체결부 규정 토크 관리, 정기 열화상 점검 권장</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="detail-subhead">경제형 대안</h4>
+              <ul class="detail-list">
+                <li>89 × 6 mm (564 mm²) → 약 1,200A, 여유 +20%</li>
+                <li>76 × 6 mm (484 mm²) → 약 1,000A</li>
+              </ul>
+
+              <h4 class="detail-subhead">150V / 1000A DC 전력배선</h4>
+              <p style="font-size:0.9rem; color:var(--muted); margin:0 0 10px;">실리콘 절연전선 <strong>95 SQ × 5가닥</strong> 병렬 구성(극당) 권장 — 왕복 30m 기준 전압강하 1.3V(0.9%), 전류밀도 2.1 A/mm².</p>
+            </div>
+          </div>
+
+          <p class="detail-source">자료: Copper Development Association(CDA) 동부스바 전류용량표 기준 산정치. 최종 설계는 IEC 61439 등 관련 규격 및 제조사 데이터로 검증 필요.</p>
+
+          <h4 class="detail-subhead">DC 전력배선 가닥 수별 성능 비교 (1000A 연속, 왕복 30m)</h4>
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>구성 (극당)</th><th>가닥당 전류</th><th>도체 온도</th><th>전압강하</th><th>케이블 발열</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>2 × 95 SQ</td><td>500 A</td><td class="warn">180–200 ℃</td><td>4.4 V (2.9%)</td><td>4.4 kW</td></tr>
+                <tr><td>3 × 95 SQ</td><td>333 A</td><td>100–130 ℃</td><td>2.4 V (1.6%)</td><td>2.4 kW</td></tr>
+                <tr><td>4 × 95 SQ</td><td>250 A</td><td>70–90 ℃</td><td>1.7 V (1.1%)</td><td>1.7 kW</td></tr>
+                <tr class="best"><td>5 × 95 SQ ★</td><td>200 A</td><td>55–75 ℃</td><td>1.3 V (0.9%)</td><td>1.3 kW</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="detail-source">판매처 표기 허용전류 500A는 도체 200℃ 한계 기준 — 설계 기준 아님. 현실적 최소 3가닥(이격 포설), 권장 4~5가닥. 5가닥 구성 전선 재료비(150m)는 약 600만원(도매 시 20~30% 절감).</p>
+
+          <h4 class="detail-subhead">시공 핵심 체크리스트</h4>
+          <ol class="step-list">
+            <li><span class="step-num">1</span><div><strong>길이 동일화</strong><p>병렬 가닥 ±2% 이내 절단 — 길이 차는 전류 쏠림 유발</p></div></li>
+            <li><span class="step-num">2</span><div><strong>양단 부스바 집결</strong><p>동 부스바에 가닥별 압착 러그 볼트 체결</p></div></li>
+            <li><span class="step-num">3</span><div><strong>전용 육각 압착</strong><p>극세연선용 다이스 사용, 납땜 병용 금지(크리프)</p></div></li>
+            <li><span class="step-num">4</span><div><strong>이격 포설</strong><p>가닥 간 케이블 직경만큼 이격 시 허용전류 20~30% 개선</p></div></li>
+            <li><span class="step-num">5</span><div><strong>DC 정격 보호기기</strong><p>150V DC 차단기/퓨즈 — AC용 유용 금지(아크 소호)</p></div></li>
+            <li><span class="step-num">6</span><div><strong>IR 열화상 검수</strong><p>초기 통전 시 가닥·접속부 온도 확인 → 전류 불균형 탐지</p></div></li>
+          </ol>
         </div>
       </div>
 
@@ -94,11 +201,44 @@
           <p class="issue-meta">Instrumentation</p>
           <p>고온 실험 환경에서 적외선(IR) 센서 자체 발열로 인한 계측 오차 원인을 분석하고 냉각/차폐 대책을 검토 중입니다.</p>
         </div>
-        <div class="issue-docs">
-          <a class="pdf-preview" href="Current_issues/IR_sensor_overheat_assessment.pdf" download>
-            <iframe src="Current_issues/IR_sensor_overheat_assessment.pdf" title="IR Sensor Overheat Assessment PDF"></iframe>
-            <div class="pdf-preview-label">overheat_assessment.pdf</div>
-          </a>
+        <div class="issue-detail">
+          <p class="detail-caption">0.5″(12.7mm) 배관 · 표면 300℃ · 반경 100mm, 원주 90° 간격 IR 센서 4개 (FOV 4°, ⌀8mm)</p>
+
+          <div class="spec-columns">
+            <div>
+              <h4 class="detail-subhead">권장 배치 (45° 회전)</h4>
+              <div class="pipe-diagram">
+                <div class="plume"></div>
+                <div class="pipe-center">배관<br>300℃</div>
+                <span class="sensor-node sensor-45">센서 45°</span>
+                <span class="sensor-node sensor-135">센서 135°</span>
+                <span class="sensor-node sensor-225">센서 225°</span>
+                <span class="sensor-node sensor-315">센서 315°</span>
+              </div>
+              <span class="pipe-radius-label">r = 100 mm</span>
+              <p class="detail-source">직상방 회피 → 수평 오프셋 71mm ≫ 플룸 반폭 15~25mm</p>
+            </div>
+
+            <div class="analysis-list">
+              <div class="analysis-item">
+                <div class="analysis-title">① 복사 열부하 — 미미</div>
+                <p>입사 열유속 ≈ ε×390 W/m² (ε 0.7 시 ~270 W/m², 태양상수의 1/4) · 흡수량 ~14mW → 센서 온도 상승 +10~20K 이내, 전도 방열로 충분히 해소</p>
+              </div>
+              <div class="analysis-item">
+                <div class="analysis-title">② 대류 — 직상방만 위험</div>
+                <p>측면·하부: entrainment 상온 공기로 오히려 냉각 → 안전. 직상방(z/D≈8): 플룸 중심 공기 50~90℃ + 요동 → 과열·드리프트 유일 위험 지점</p>
+              </div>
+              <div class="analysis-item">
+                <div class="analysis-title">③ 광학 스팟 — 별도 확인 필요</div>
+                <p>100mm에서 스팟 7~15mm vs 배관 폭 12.7mm → 데이터시트 스팟 차트 확인 · 정렬 여유 ±2.8mm(±1.6°) → 조준 지그 권장</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="conclusion-box">
+            <strong>결론</strong> 원주방향 45° 회전 배치(45·135·225·315°) 시 별도 차폐·에어퍼지 없이 과열 문제 없음
+            <span class="conclusion-note">※ 횡방향 기류 시 가림판, 상부 표면 수 K 고온 경향만 유의</span>
+          </div>
         </div>
       </div>
 
