@@ -45,6 +45,19 @@
     </div>
   </section>
 
+  <section class="section" style="padding-bottom:0;">
+    <div class="container">
+      <div class="ws-status" id="ws-status" hidden aria-live="polite">
+        <div class="ws-status-head">
+          <h2>연구 진행현황</h2>
+          <span class="ws-status-updated" id="ws-updated"></span>
+        </div>
+        <div class="ws-kanban" id="ws-kanban"></div>
+        <p class="ws-purchase" id="ws-purchase"></p>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
 
@@ -274,5 +287,48 @@
   </div>
 </footer>
 <script src="assets/js/main.js?v=6"></script>
+<script>
+(function () {
+  var STATUS_URL = "https://gist.githubusercontent.com/dekim79/fbe271bac8a9b50f3b94108f047daef6/raw/workspace-status.json";
+
+  function fmtUpdated(iso) {
+    try {
+      var d = new Date(iso);
+      return d.toLocaleString("ko-KR", { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" });
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function render(data) {
+    var kanban = document.getElementById("ws-kanban");
+    var purchase = document.getElementById("ws-purchase");
+    var updated = document.getElementById("ws-updated");
+    var wrap = document.getElementById("ws-status");
+
+    kanban.innerHTML = (data.stages || []).map(function (stage, i) {
+      var chips = (stage.items || []).map(function (name) {
+        return '<span class="ws-chip">' + name.replace(/</g, "&lt;") + "</span>";
+      }).join("");
+      return (
+        '<div class="ws-stage ws-stage-' + (i + 1) + '">' +
+          '<div class="ws-stage-count">' + stage.count + "</div>" +
+          '<div class="ws-stage-name">' + stage.name + "</div>" +
+          (chips ? '<div class="ws-chip-list">' + chips + "</div>" : "") +
+        "</div>"
+      );
+    }).join("");
+
+    purchase.textContent = "구매요청 승인 대기: " + (data.purchasePending || 0) + "건";
+    updated.textContent = data.updatedAt ? "업데이트 " + fmtUpdated(data.updatedAt) : "";
+    wrap.hidden = false;
+  }
+
+  fetch(STATUS_URL, { cache: "no-store" })
+    .then(function (res) { return res.ok ? res.json() : Promise.reject(res.status); })
+    .then(render)
+    .catch(function () { /* widget stays hidden if the feed is unavailable */ });
+})();
+</script>
 </body>
 </html>
