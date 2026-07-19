@@ -49,10 +49,19 @@
     <div class="container">
       <div class="ws-status" id="ws-status" hidden aria-live="polite">
         <div class="ws-status-head">
-          <h2>연구 진행현황</h2>
+          <h2>연구실 현황</h2>
           <span class="ws-status-updated" id="ws-updated"></span>
         </div>
-        <div class="ws-kanban" id="ws-kanban"></div>
+        <div class="ws-columns">
+          <div class="ws-col">
+            <h3 class="ws-col-title">최근 이슈</h3>
+            <ul class="ws-list" id="ws-issues"></ul>
+          </div>
+          <div class="ws-col">
+            <h3 class="ws-col-title">최근 디스커션</h3>
+            <ul class="ws-list" id="ws-discussions"></ul>
+          </div>
+        </div>
         <p class="ws-purchase" id="ws-purchase"></p>
       </div>
     </div>
@@ -300,24 +309,45 @@
     }
   }
 
+  function esc(s) {
+    return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
   function render(data) {
-    var kanban = document.getElementById("ws-kanban");
+    var issuesEl = document.getElementById("ws-issues");
+    var discussionsEl = document.getElementById("ws-discussions");
     var purchase = document.getElementById("ws-purchase");
     var updated = document.getElementById("ws-updated");
     var wrap = document.getElementById("ws-status");
 
-    kanban.innerHTML = (data.stages || []).map(function (stage, i) {
-      var chips = (stage.items || []).map(function (name) {
-        return '<span class="ws-chip">' + name.replace(/</g, "&lt;") + "</span>";
+    issuesEl.innerHTML = (data.issues || []).map(function (item) {
+      var badge = item.state === "OPEN"
+        ? '<span class="ws-badge ws-badge-open">Open</span>'
+        : '<span class="ws-badge ws-badge-closed">Closed</span>';
+      var labels = (item.labels || []).map(function (l) {
+        return '<span class="ws-chip">' + esc(l) + "</span>";
       }).join("");
       return (
-        '<div class="ws-stage ws-stage-' + (i + 1) + '">' +
-          '<div class="ws-stage-count">' + stage.count + "</div>" +
-          '<div class="ws-stage-name">' + stage.name + "</div>" +
-          (chips ? '<div class="ws-chip-list">' + chips + "</div>" : "") +
-        "</div>"
+        '<li class="ws-item"><a href="' + item.url + '" target="_blank" rel="noopener">' +
+          badge + '<span class="ws-item-title">' + esc(item.title) + "</span></a>" +
+          (labels ? '<div class="ws-chip-list">' + labels + "</div>" : "") +
+        "</li>"
       );
-    }).join("");
+    }).join("") || '<li class="ws-empty">최근 이슈 없음</li>';
+
+    discussionsEl.innerHTML = (data.discussions || []).map(function (d) {
+      var badge = d.closed
+        ? '<span class="ws-badge ws-badge-closed">Closed</span>'
+        : d.answered
+          ? '<span class="ws-badge ws-badge-answered">Answered</span>'
+          : '<span class="ws-badge ws-badge-open">Open</span>';
+      return (
+        '<li class="ws-item"><a href="' + d.url + '" target="_blank" rel="noopener">' +
+          badge + '<span class="ws-item-title">' + esc(d.title) + "</span></a>" +
+          (d.category ? '<div class="ws-chip-list"><span class="ws-chip">' + esc(d.category) + "</span></div>" : "") +
+        "</li>"
+      );
+    }).join("") || '<li class="ws-empty">최근 디스커션 없음</li>';
 
     purchase.textContent = "구매요청 승인 대기: " + (data.purchasePending || 0) + "건";
     updated.textContent = data.updatedAt ? "업데이트 " + fmtUpdated(data.updatedAt) : "";
