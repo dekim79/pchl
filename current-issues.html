@@ -6,7 +6,7 @@
 <title>Current Issues — PCHL | Chung-Ang University</title>
 <meta name="description" content="PCHL이 현재 논의하고 해결해 나가고 있는 실험/연구 이슈 트래킹." />
 <link rel="icon" href="assets/img/misc/einstein-placeholder.svg" type="image/svg+xml" />
-<link rel="stylesheet" href="assets/css/style.css?v=11" />
+<link rel="stylesheet" href="assets/css/style.css?v=12" />
 </head>
 <body>
 <a class="skip-link" href="#main">본문 바로가기</a>
@@ -108,6 +108,79 @@
             </div>
           </div>
           <p class="team-flow-note">※ 세 분야 모두 i-SMR 실험에 협업 참여하며, 신규 연구원은 연구실 적응 후 희망 분야를 배정받습니다.</p>
+        </div>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-body">
+          <span class="status-pill status-open">Open</span>
+          <h3>A Simple view on the Microlayer Formation Mechanism</h3>
+          <p class="issue-meta">Pool Boiling · Interfacial Fluid Mechanics</p>
+          <p>마이크로레이어 형성은 벽면 경계층의 잔류가 아니라, 이동하는 기포 계면이 벽면에 액막을 남기는 <strong>film deposition</strong> 문제(일반화된 Landau–Levich, visco-inertial 레짐)로 보는 것이 타당하다는 관점을 정리했습니다.</p>
+        </div>
+        <div class="issue-detail">
+          <p class="detail-caption">Cooper–Lloyd(1969)의 velocity boundary layer 잔류 가설(δ₀ = c·√(ν·t))과 일반화된 Landau–Levich film deposition(h ~ ℓc·Ca²ᐟ³) 두 시각을 비교하고, 이를 구분할 판별 실험을 제안합니다.</p>
+
+          <div class="grid-3 team-grid">
+            <div class="team-card team-red">
+              <h4>경계층 이론 (Cooper–Lloyd, 1969) — 기각</h4>
+              <ul>
+                <li>δ₀ = c·√(ν·t): 사실상 차원해석 — 왜 그 두께가 남는지 정하는 물리가 부재</li>
+                <li>단상 벌크유동 개념 → 자유계면 경계조건이 들어갈 자리가 없음</li>
+                <li>σ·젖음성·접촉선을 원리적으로 배제 (δ는 ν, t만의 함수)</li>
+                <li>상수 c가 문헌마다 0.3–1.0으로 부유 — 사실상 피팅 상수</li>
+              </ul>
+            </div>
+            <div class="team-card team-green">
+              <h4>LLD Film Deposition (일반화) — 채택</h4>
+              <ul>
+                <li>h ~ ℓc·Ca²ᐟ³: dynamic meniscus 두께 선택 메커니즘</li>
+                <li>계면 발치 정체점에서 점성응력 ↔ 모세관압 경쟁이 잔류 두께를 선택</li>
+                <li>σ, 라플라스압, 접촉선 물리를 자연스럽게 포함</li>
+                <li>DNS 근거: Guion et al. (2018), Bureš &amp; Sato (2021)</li>
+                <li>단, 고전 LLD(저Ca·준정상) 직접 적용 불가 — 관성·비정상 보정 필요</li>
+              </ul>
+            </div>
+            <div class="team-card team-orange">
+              <h4>경계층 이론의 구조적 결함 (스케일 논거)</h4>
+              <ul>
+                <li>δ ~ 1 μm 스케일에서 라플라스압 σκ는 수~수십 kPa급 — σ를 빼면 문제가 닫히지 않음</li>
+                <li>Triple contact line의 dynamic contact angle·증발성 접촉선 후퇴·disjoining pressure를 BL로는 설명 불가</li>
+                <li>젖음성 개질에 따른 마이크로레이어·dryout 거동 변화는 δ(ν,t) 이론으로 원리적으로 설명 불가능</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="analysis-item" style="margin-top:20px;">
+            <div class="analysis-title">왜 √(νt)가 데이터와 맞아 보였는가</div>
+            <p>기포 성장 R ~ √t → 계면속도 U ~ t⁻¹ᐟ² → deposition 두께에 √t 유사 시간의존성이 자연스럽게 유입됩니다. 즉 경계층 물리의 검증이 아니라 기포 운동학의 반영이며, 시간 스케일링만으로는 두 이론이 판별되지 않습니다.</p>
+          </div>
+
+          <h4 class="detail-subhead">판별 실험: 비정상 Dip Coating (속도 프로파일 제어 인출)</h4>
+          <div class="grid-4">
+            <div class="analysis-item">
+              <div class="analysis-title">프로토콜</div>
+              <p>표면을 액조에서 수직 인출하며 속도 프로파일(가속·등속·감속)을 제어합니다. 감속 구간 U ~ t⁻¹ᐟ²로 기포 계면 운동학을 모사하여 δ₀(r) ↔ h(z)를 일대일 대응시킵니다.</p>
+            </div>
+            <div class="analysis-item">
+              <div class="analysis-title">판별 논리</div>
+              <p>동일 노출시간 t, 상이한 속도 이력 조건에서 BL 이론은 동일 두께를, LLD 이론은 순간 Ca(t)²ᐟ³ 값을 추종합니다. σ를 독립적으로 바꿀 때 BL은 무의존, LLD는 의존 — 반증 가능한 구조입니다.</p>
+            </div>
+            <div class="analysis-item">
+              <div class="analysis-title">측정</div>
+              <p>예상 두께 수십–150 μm (Ca ~ 10⁻³–10⁻²) 범위로, 공초점 현미경·분광반사계를 병용합니다. 저속(박막) 구간은 기존 박막 간섭계를 활용합니다.</p>
+            </div>
+            <div class="analysis-item">
+              <div class="analysis-title">실무 주의</div>
+              <p>순수 물은 오염에 의해 Marangoni 효과가 비대화(~2.5배)될 수 있어 실리콘 오일 기준선을 병행합니다. 인출 후 중력 배수를 보정하고, Ca·Re·비정상성 무차원수를 실제 기포 조건과 매칭합니다.</p>
+            </div>
+          </div>
+
+          <div class="conclusion-box">
+            <strong>결론</strong> 시간 스케일링(√t)만으로는 velocity boundary layer 잔류 가설과 LLD film deposition 가설을 구분할 수 없으며, 속도 프로파일을 독립적으로 제어하는 비정상 dip coating 실험이 두 메커니즘을 반증 가능한 형태로 판별할 수 있습니다.
+          </div>
+
+          <p class="detail-source">Refs: Cooper &amp; Lloyd (1969) · Landau &amp; Levich (1942) · Guion et al., IJHMT (2018) · Bureš &amp; Sato (2021)</p>
         </div>
       </div>
 

@@ -383,6 +383,7 @@ p { margin: 0 0 1em; }
 .team-green { background: #e8f5e9; border-left-color: #2e7d32; }
 .team-blue { background: #e3f2fd; border-left-color: #1565c0; }
 .team-orange { background: #fff8e1; border-left-color: #e65100; }
+.team-red { background: #ffebee; border-left-color: #c62828; }
 .team-flow-note { font-size: 0.78rem; color: var(--muted); margin-top: 14px; }
 
 /* ---------- News ---------- */
