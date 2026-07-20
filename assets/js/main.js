@@ -17,6 +17,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Expand/collapse issue detail cards
+  document.querySelectorAll(".issue-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".issue-card");
+      const isOpen = card.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", String(isOpen));
+      btn.querySelector(".issue-toggle-label").textContent = isOpen ? "접기" : "자세히 보기";
+    });
+  });
+
   // Mark current nav link
   const path = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav-links a").forEach((a) => {

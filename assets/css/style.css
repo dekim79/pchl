@@ -284,8 +284,20 @@ p { margin: 0 0 1em; }
   padding: 18px 22px; font-size: 0.92rem; color: var(--muted); margin-top: 20px;
 }
 
+.issue-toggle {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+  padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px;
+  background: var(--light); color: var(--navy-2); font-size: 0.8rem; font-weight: 700;
+  cursor: pointer; transition: background 0.15s ease, color 0.15s ease;
+}
+.issue-toggle:hover { background: #e9edf2; }
+.issue-toggle-icon { transition: transform 0.2s ease; }
+.issue-card.is-open .issue-toggle-icon { transform: rotate(180deg); }
+.issue-card.is-open .issue-toggle { background: var(--navy); color: #fff; }
+
 /* -- issue detail content (extracted from source PDFs) -- */
-.issue-detail { margin-top: 20px; }
+.issue-detail { display: none; margin-top: 20px; }
+.issue-card.is-open .issue-detail { display: block; }
 .detail-caption { font-size: 0.86rem; color: var(--muted); margin-bottom: 18px; }
 .detail-subhead { font-size: 0.88rem; font-weight: 700; color: var(--navy); margin: 22px 0 10px; }
 .detail-list { margin: 0; padding-left: 20px; color: var(--muted); font-size: 0.9rem; }
