@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SAM Interactive Masking Demo</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f5f5f7;
+    --panel: #ffffff;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --border: #d8d8dc;
+    --accent: #0071e3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16161a;
+      --panel: #232327;
+      --text: #f2f2f4;
+      --muted: #9a9aa0;
+      --border: #3a3a3e;
+      --accent: #4da3ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", "Malgun Gothic", sans-serif;
+    padding: 24px;
+  }
+  h1 { font-size: 1.3rem; margin: 0 0 4px; }
+  p.subtitle { color: var(--muted); margin: 0 0 20px; font-size: 0.92rem; }
+  .layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .canvas-wrap {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px;
+    max-width: 100%;
+  }
+  canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    cursor: crosshair;
+    border-radius: 4px;
+  }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    min-width: 230px;
+    font-size: 0.9rem;
+  }
+  .panel h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin: 0 0 10px; }
+  .class-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.88rem;
+    text-align: left;
+  }
+  .class-btn .swatch {
+    width: 12px; height: 12px; border-radius: 50%; flex: none;
+  }
+  .class-btn.active {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .actions { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
+  .actions button {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .actions button:hover, .class-btn:hover { background: rgba(128,128,128,0.12); }
+  .actions button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  #status {
+    margin-top: 14px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+    min-height: 3.5em;
+    white-space: pre-line;
+  }
+  .hint {
+    margin-top: 16px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  code { background: rgba(128,128,128,0.15); padding: 1px 4px; border-radius: 4px; }
+</style>
+</head>
+<body>
+  <h1>SAM Interactive Masking &mdash; 브라우저 데모</h1>
+  <p class="subtitle">Boiling 가시화 이미지에서 점을 클릭해 dry spot / microlayer / bulk liquid 영역을 SAM으로 즉시 분할해보는 데모입니다. 이 사진에 대한 이미지 임베딩은 미리 계산되어 있고, 클릭 시 가벼운 decoder 모델만 브라우저에서 실행됩니다.</p>
+
+  <div class="layout">
+    <div class="canvas-wrap">
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="panel">
+      <h2>클래스</h2>
+      <button class="class-btn active" data-class="1">
+        <span class="swatch" style="background:#ff3b30"></span> 1&nbsp;·&nbsp;dry spot
+      </button>
+      <button class="class-btn" data-class="2">
+        <span class="swatch" style="background:#34c759"></span> 2&nbsp;·&nbsp;microlayer
+      </button>
+      <button class="class-btn" data-class="3">
+        <span class="swatch" style="background:#0a84ff"></span> 3&nbsp;·&nbsp;bulk liquid
+      </button>
+
+      <h2 style="margin-top:16px;">동작</h2>
+      <div class="actions">
+        <button id="btn-accept" class="primary">확정 (a)</button>
+        <button id="btn-clear-points">진행 중인 점 지우기 (c)</button>
+        <button id="btn-reset">전체 라벨 초기화 (r)</button>
+        <button id="btn-download">라벨 이미지 저장</button>
+      </div>
+
+      <div id="status">모델을 불러오는 중입니다&hellip;</div>
+
+      <div class="hint">
+        좌클릭: 영역 포함 (positive)<br />
+        우클릭: 영역 제외 (negative, 경계 다듬기)<br />
+        SAM 모델: <a href="https://github.com/facebookresearch/segment-anything" target="_blank" rel="noopener">Segment Anything (Meta AI)</a>, vit_b, 브라우저에서 onnxruntime-web으로 실행
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

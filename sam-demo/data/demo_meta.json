@@ -1,0 +1,11 @@
+{
+  "width": 952,
+  "height": 424,
+  "embed_dim": 256,
+  "embed_size": [
+    64,
+    64
+  ],
+  "model_type": "vit_b",
+  "encoder_input_size": 1024
+}
