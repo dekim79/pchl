@@ -129,36 +129,40 @@
         <div class="issue-detail">
           <p class="detail-caption">SAM(ViT-B) 기반 포인트 프롬프트 분할 · dry spot / microlayer / bulk liquid 3-클래스 색상 오버레이 · 멀티페이지 TIF 폴더 배치 처리</p>
 
-          <figure class="issue-figure">
-            <img src="assets/img/misc/boiling-masking-tool-result.jpg" alt="Boiling Masking Tool 실행 화면 — dry spot(빨강)·microlayer(초록)·bulk liquid(파랑) 클래스로 색상 오버레이된 비등 가시화 이미지, positive/negative 포인트 클릭 표시" loading="lazy" />
-            <figcaption>실행 결과 예시 — 100_20frames.tif, class=microlayer 프롬프트로 dry spot·microlayer 영역 분할</figcaption>
-          </figure>
+          <div class="spec-columns">
+            <figure class="issue-figure" style="margin-bottom:0;">
+              <img src="assets/img/misc/boiling-masking-tool-result.jpg" alt="Boiling Masking Tool 실행 화면 — dry spot(빨강)·microlayer(초록)·bulk liquid(파랑) 클래스로 색상 오버레이된 비등 가시화 이미지, positive/negative 포인트 클릭 표시" loading="lazy" />
+              <figcaption>실행 결과 예시 — 100_20frames.tif, class=microlayer 프롬프트로 dry spot·microlayer 영역 분할</figcaption>
+            </figure>
 
-          <h4 class="detail-subhead">기술 스택</h4>
-          <div class="grid-3">
-            <div class="analysis-item">
-              <div class="analysis-title">SEG · Segment Anything (ViT-B)</div>
-              <p>포인트 프롬프트 기반 분할</p>
-            </div>
-            <div class="analysis-item">
-              <div class="analysis-title">DL · PyTorch (CPU)</div>
-              <p>SAM 추론 엔진</p>
-            </div>
-            <div class="analysis-item">
-              <div class="analysis-title">IMG · OpenCV · tifffile</div>
-              <p>멀티페이지 TIF 입출력</p>
-            </div>
-            <div class="analysis-item">
-              <div class="analysis-title">UI · Matplotlib + Tkinter</div>
-              <p>클릭 UI · 파일 열기</p>
-            </div>
-            <div class="analysis-item">
-              <div class="analysis-title">PKG · PyInstaller</div>
-              <p>독립 실행파일(.exe) 빌드</p>
-            </div>
-            <div class="analysis-item">
-              <div class="analysis-title">SETUP · Inno Setup</div>
-              <p>설치 마법사 제작</p>
+            <div>
+              <h4 class="detail-subhead" style="margin-top:0;">기술 스택</h4>
+              <div class="grid-2" style="gap:12px;">
+                <div class="analysis-item">
+                  <div class="analysis-title">SEG · Segment Anything (ViT-B)</div>
+                  <p>포인트 프롬프트 기반 분할</p>
+                </div>
+                <div class="analysis-item">
+                  <div class="analysis-title">DL · PyTorch (CPU)</div>
+                  <p>SAM 추론 엔진</p>
+                </div>
+                <div class="analysis-item">
+                  <div class="analysis-title">IMG · OpenCV · tifffile</div>
+                  <p>멀티페이지 TIF 입출력</p>
+                </div>
+                <div class="analysis-item">
+                  <div class="analysis-title">UI · Matplotlib + Tkinter</div>
+                  <p>클릭 UI · 파일 열기</p>
+                </div>
+                <div class="analysis-item">
+                  <div class="analysis-title">PKG · PyInstaller</div>
+                  <p>독립 실행파일(.exe) 빌드</p>
+                </div>
+                <div class="analysis-item">
+                  <div class="analysis-title">SETUP · Inno Setup</div>
+                  <p>설치 마법사 제작</p>
+                </div>
+              </div>
             </div>
           </div>
 
