@@ -117,6 +117,64 @@
 
       <div class="issue-card">
         <div class="issue-body">
+          <span class="status-pill status-done">Done</span>
+          <h3>Boiling 상분포 가시화 이미지 영역 마스킹 코드 개발</h3>
+          <p class="issue-meta">Pool Boiling · Image Segmentation Tool</p>
+          <p>Meta의 Segment Anything Model(SAM)을 활용해 비등 가시화 이미지에서 dry spot · microlayer · bulk liquid 영역을 포인트 클릭만으로 분할·라벨링하는 인터랙티브 마스킹 도구를 개발했습니다. Python 설치 없이 실행되는 독립 설치파일(.exe)로 배포하여 실험 데이터 후처리 워크플로우를 자동화했습니다.</p>
+          <button class="issue-toggle" type="button" aria-expanded="false">
+            <span class="issue-toggle-label">자세히 보기</span>
+            <svg class="issue-toggle-icon" width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 8 10 13 15 8"/></svg>
+          </button>
+        </div>
+        <div class="issue-detail">
+          <p class="detail-caption">SAM(ViT-B) 기반 포인트 프롬프트 분할 · dry spot / microlayer / bulk liquid 3-클래스 색상 오버레이 · 멀티페이지 TIF 폴더 배치 처리</p>
+
+          <h4 class="detail-subhead">기술 스택</h4>
+          <div class="grid-3">
+            <div class="analysis-item">
+              <div class="analysis-title">SEG · Segment Anything (ViT-B)</div>
+              <p>포인트 프롬프트 기반 분할</p>
+            </div>
+            <div class="analysis-item">
+              <div class="analysis-title">DL · PyTorch (CPU)</div>
+              <p>SAM 추론 엔진</p>
+            </div>
+            <div class="analysis-item">
+              <div class="analysis-title">IMG · OpenCV · tifffile</div>
+              <p>멀티페이지 TIF 입출력</p>
+            </div>
+            <div class="analysis-item">
+              <div class="analysis-title">UI · Matplotlib + Tkinter</div>
+              <p>클릭 UI · 파일 열기</p>
+            </div>
+            <div class="analysis-item">
+              <div class="analysis-title">PKG · PyInstaller</div>
+              <p>독립 실행파일(.exe) 빌드</p>
+            </div>
+            <div class="analysis-item">
+              <div class="analysis-title">SETUP · Inno Setup</div>
+              <p>설치 마법사 제작</p>
+            </div>
+          </div>
+
+          <h4 class="detail-subhead">주요 기능</h4>
+          <ul class="detail-list">
+            <li>포인트 클릭으로 즉시 영역 분할 (좌클릭 포함 / 우클릭 제외)</li>
+            <li>dry spot · microlayer · bulk liquid 3-클래스 색상 오버레이</li>
+            <li>파일 열기 대화상자 내장 + 폴더 배치 순회 · 이어하기</li>
+            <li>Python 설치 없이 실행되는 독립 설치파일 (오프라인 동작)</li>
+          </ul>
+
+          <div class="conclusion-box">
+            <strong>결론</strong> 클릭 기반 상 분포 마스킹을 독립 실행형 도구로 구현하여, 비등 가시화 이미지의 dry spot·microlayer·bulk liquid 라벨링 작업을 수작업 대비 대폭 단축하고 판정 일관성을 확보했습니다.
+          </div>
+
+          <p class="detail-source">자료: BoilingMaskingTool_Slide.pdf (연구실 내부 문서)</p>
+        </div>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-body">
           <span class="status-pill status-open">Open</span>
           <h3>A Simple view on the Microlayer Formation Mechanism</h3>
           <p class="issue-meta">Pool Boiling · Interfacial Fluid Mechanics</p>
