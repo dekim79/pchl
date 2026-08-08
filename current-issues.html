@@ -127,6 +127,52 @@
       <div class="issue-card">
         <div class="issue-body">
           <span class="status-pill status-done">Done</span>
+          <h3>딥러닝 기반 비등 상분포(Phase Distribution) 자동 분할</h3>
+          <p class="issue-meta">Pool Boiling · Deep Learning Segmentation (U-Net)</p>
+          <p>SAM 마스킹 도구로 생성한 라벨 데이터를 학습에 활용해, 대용량 시계열 비등 가시화 이미지를 dry spot · microlayer · bulk liquid 3개 영역으로 클릭 없이 완전 자동 분할하는 U-Net 기반 딥러닝 모델을 개발했습니다.</p>
+          <button class="issue-toggle" type="button" aria-expanded="false">
+            <span class="issue-toggle-label">자세히 보기</span>
+            <svg class="issue-toggle-icon" width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 8 10 13 15 8"/></svg>
+          </button>
+        </div>
+        <div class="issue-detail">
+          <p class="detail-caption">ResNet-34 인코더 + U-Net 디코더 · 3-class semantic segmentation · Val mIoU 0.918 · 대용량 multipage TIF 시계열 일괄 추론</p>
+
+          <figure class="issue-figure">
+            <img src="assets/img/misc/boiling-segmentation-unet-result.jpg" alt="비등 상분포 자동 분할 결과 — 좌측 원본 그레이스케일 프레임, 우측 모델 예측 마스크 오버레이(dry spot 빨강, microlayer 초록, bulk liquid 파랑)" loading="lazy" />
+            <figcaption>(좌) 원본 그레이스케일 프레임 → (우) 모델 예측 상분포 마스크 오버레이 — dry spot(빨강) · microlayer(초록) · bulk liquid(파랑)</figcaption>
+          </figure>
+
+          <div class="grid-4" style="margin-top:20px;">
+            <div class="analysis-item">
+              <div class="analysis-title">STEP 1 · 라벨 데이터 생성 (SAM)</div>
+              <p>Segment Anything(ViT) 포인트 프롬프트로 프레임별 dry spot / microlayer / bulk liquid 마스크 반자동 생성</p>
+            </div>
+            <div class="analysis-item">
+              <div class="analysis-title">STEP 2 · 모델 구조 (U-Net)</div>
+              <p>ResNet-34 인코더(ImageNet 사전학습) + U-Net 디코더, skip connection 구조, 3-class semantic segmentation (약 2,450만 파라미터)</p>
+            </div>
+            <div class="analysis-item">
+              <div class="analysis-title">STEP 3 · 학습 설정</div>
+              <p>CrossEntropy + Dice Loss(클래스 불균형 가중치), AdamW + Cosine LR, Mixed Precision, 이미지 증강(flip/affine/노이즈 등)</p>
+            </div>
+            <div class="analysis-item">
+              <div class="analysis-title">RESULT · 성능 · 자동화</div>
+              <p>Val mIoU 0.918 (dry 0.96 / micro 0.79 / bulk 0.99). 대용량 multipage TIF 시계열 일괄 추론 + 프레임별 상 면적비율 CSV 자동 산출</p>
+            </div>
+          </div>
+
+          <div class="conclusion-box">
+            <strong>결론</strong> SAM 반자동 라벨링으로 확보한 데이터를 U-Net 학습에 활용해 포인트 클릭 없이 대용량 시계열 이미지를 일괄 자동 분할하는 파이프라인을 구축했으며, Val mIoU 0.918로 실험 데이터 후처리를 완전 자동화했습니다.
+          </div>
+
+          <p class="detail-source">자료: DL_Segmentation_Slide.pptx (연구실 내부 문서)</p>
+        </div>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-body">
+          <span class="status-pill status-done">Done</span>
           <h3>Boiling 상분포 가시화 이미지 영역 마스킹 코드 개발</h3>
           <p class="issue-meta">Pool Boiling · Image Segmentation Tool</p>
           <p>Meta의 Segment Anything Model(SAM)을 활용해 비등 가시화 이미지에서 dry spot · microlayer · bulk liquid 영역을 포인트 클릭만으로 분할·라벨링하는 인터랙티브 마스킹 도구를 개발했습니다. Python 설치 없이 실행되는 독립 설치파일(.exe)로 배포하여 실험 데이터 후처리 워크플로우를 자동화했습니다.</p>
